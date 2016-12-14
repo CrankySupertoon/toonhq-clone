@@ -30,7 +30,9 @@ This returns the server status data -- basically if the account server is up and
 ## Disclaimer
 
 This project is just a fun little thing I planned to do. It was too hot to go outside and I was bored. 
+
 Credits to @TheRandomDog for saying 'nice bro' to the screenshots I showed him.
+
 Credits to @lukewarm74 for being the original creator.
 
 This is yet to be updated later down the track.
