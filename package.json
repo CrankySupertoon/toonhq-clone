@@ -1,0 +1,19 @@
+{
+  "name": "toonhq-clone",
+  "version": "1.0.0",
+  "description": "This is just a clone of the site because I was bored and it's over 110F outside.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabedev/toonhq-clone.git"
+  },
+  "author": "Garb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabedev/toonhq-clone/issues"
+  },
+  "homepage": "https://github.com/gabedev/toonhq-clone#readme"
+}
