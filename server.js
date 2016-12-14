@@ -13,6 +13,8 @@ var Status = require('./modules/status');
 
 // Configuration
 
+var feVal = "::1"; // IP of the front-end so it doesn't get logged in console.
+
 var port = process.env.PORT || 8080; // Designating the port.
 var router = express.Router(); // Allowing us to create our routes.
 
@@ -25,9 +27,12 @@ app.use(bp.json());
 // Middleware -- This is used so when we know if an infected connection is incoming.
 
 router.use(function(req, res, next){
-  // Advanced logging feature.
-  console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.');
-  next();
+  if (req.connection.remoteAddress == feVal) {
+    next();
+  } else  {
+    console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.');
+    next();
+  }
 });
 
 // Routers
