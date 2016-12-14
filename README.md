@@ -3,12 +3,12 @@ This is a replication project because it's too hot to go outside.
 
 ## What is included in this project?
 
-`Front End`
+Front End
 -----------
 
 There will be a ToonHQ feel Front-End which will take requests from the Back End
 
-`Back End`
+Back End
 ----------
 
 There will be a Back End that will be fully functional. 
