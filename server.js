@@ -25,7 +25,7 @@ app.use(bp.json());
 
 router.use(function(req, res, next){
   // Advanced logging feature.
-  console.log('[Middleware] There is an incoming connection coming from: ' + req.connection + '.');
+  console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.');
   next();
 });
 
