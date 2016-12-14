@@ -8,6 +8,8 @@ var app = express();
 var bp = require('body-parser');
 var morgan = require('morgan');
 
+var Invasion = require('./modules/invasions');
+
 // Configuration
 
 var port = process.env.PORT || 8080; // Designating the port.
@@ -34,6 +36,10 @@ router.get('/', function(req, res) {
     { message: "Welcome to ToonHQ Clone API!" }
   );
 });
+
+router.get('/invasions', function(req, res) {
+  Invasion.grabInvasionList(req, res);
+})
 
 // Finalise
 
