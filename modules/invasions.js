@@ -1,5 +1,5 @@
-// This is the main server file.
-// Subject to be dirty.
+// Invasion Status -- ToonHQ Clone
+// Created by @gaarb
 
 // Modules
 
@@ -10,30 +10,27 @@ var request = require('request');
 var InvasionURL = "https://toontownrewritten.com/api/invasions"; // URL from Toontown Rewritten Data
 var InvasionData = []; // Array for Invasion Data
 
-// Functions
+// Router Functions
 
 module.exports = {
-
-  grabInvasionList: function (req, res) {
-    request({
-      url: InvasionURL,
-      json: true
-    }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        res.send(body);
-        console.log('[Invasions.js] Sent InvasionList to requested Client-Agent');
-      }
-    });
+  sendInvasionList: function (req, res) {
+    grabInvasionList();
+    res.send(InvasionData);
   }
-
 };
 
-console.log('[Invasions.js] No errors are detected. Success');
+// Normal Functions
 
-// function updateInvasionList() {
-//   // Update Invasion List.
-// }
-//
-// function returnInvasionList() {
-//   // Return to the user
-// }
+function grabInvasionList() {
+  request({
+    url: InvasionURL,
+    json: true
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      InvasionData = body;
+      console.log(InvasionData);
+    }
+  });
+}
+
+console.log('[Invasions] No errors are detected. Continuing...');

@@ -9,6 +9,7 @@ var bp = require('body-parser');
 var morgan = require('morgan');
 
 var Invasion = require('./modules/invasions');
+var Status = require('./modules/status');
 
 // Configuration
 
@@ -37,11 +38,11 @@ router.get('/', function(req, res) {
   );
 });
 
-router.get('/invasions', function(req, res) {
-  Invasion.grabInvasionList(req, res);
-})
+router.get('/invasions', Invasion.sendInvasionList);
+
+router.get('/status', Status.grabServerStatus);
 
 // Finalise
 
 app.listen(port);
-console.log('[Server.js] Web-server has successfully started!');
+console.log('[Server] Web-server has successfully started!');
