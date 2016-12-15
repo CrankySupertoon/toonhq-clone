@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
 
 router.get('/invasions', Invasion.sendInvasionList);
 
-router.get('/status', Status.grabServerStatus);
+router.get('/status', Status.returnServerStatus);
 
 // Finalise
 
