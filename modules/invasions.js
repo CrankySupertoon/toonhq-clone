@@ -4,6 +4,11 @@
 // Modules
 
 var request = require('request');
+var looper = require('infinite-loop');
+
+// Setups
+
+var loop = new looper;
 
 // Variables
 
@@ -14,7 +19,6 @@ var InvasionData = []; // Array for Invasion Data
 
 module.exports = {
   sendInvasionList: function (req, res) {
-    grabInvasionList();
     res.send(InvasionData);
   }
 };
@@ -31,5 +35,14 @@ function grabInvasionList() {
     }
   });
 }
+
+// Looping functions -- I don't want to depend on the front-end pinging the server incase it breaks, plus others might like to use it.
+
+loop.add(grabInvasionList, []); // Adding the function 'grabInvasionList' to the looper.
+loop.setInterval(5000); // Every 5 seconds it'll update the list.
+
+loop.run(); // Finally running the function.
+
+// Finalise
 
 console.log('[Invasions] No errors are detected. Continuing...');
