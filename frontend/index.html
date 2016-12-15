@@ -14,31 +14,40 @@
     <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar navbar-dark bg-faded">
-        <a class="navbar-brand" href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Toontown Rewritten Tracker</a>
-      </nav>
-      <div class="shdr">
-        <span class="text">Server Status</span>
+  <div class="container">
+    <nav class="navbar navbar-dark bg-faded">
+      <a class="navbar-brand" href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Toontown Rewritten Tracker</a>
+    </nav>
+    <div class="shdr">
+      <span class="text">Server Status</span>
+    </div>
+    <div class="status">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-block">
+            <h4 class="card-title">Game</h4>
+            <div class="status-wheel online">
+              <span class="status-text">ONLINE</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-block">
+            <h4 class="card-title">Login</h4>
+            <div class="status-wheel offline">
+              <span class="status-text">OFFLINE</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="status">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card card-block">
-              <h4 class="card-title">Game</h4>
-              <div class="status-wheel online">
-                <span class="status-text">ONLINE</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card card-block">
-              <h4 class="card-title">Login</h4>
-              <div class="status-wheel offline">
-                <span class="status-text">ONLINE</span>
-              </div>
-            </div>
-          </div>
+    </div>
+    <div class="shdr">
+      <span class="text">Invasions</span>
+    </div>
+    <div class="invasions">
+      <div class="col-md-4">
+        <div class="card card-block">
+          <img class="cog-img" src="img/cogs/ambulance_chaser.png" alt="">
         </div>
       </div>
     </div>
