@@ -118,7 +118,7 @@ function updateStatus () {
 // Looping functions -- I don't want to depend on the front-end pinging the server incase it breaks, plus others might like to use it.
 
 loop.add(updateStatus, []); // Adding the function 'grabInvasionList' to the looper.
-loop.setInterval(30000); // Every 30 seconds, it'll update the list. This isn't as important as Invasions so it'll update
+loop.setInterval(60000); // Every 60 seconds, it'll update the list. This isn't as important as Invasions so it'll update
 
 loop.run(); // Finally running the function.
 
