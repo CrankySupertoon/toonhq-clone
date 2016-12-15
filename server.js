@@ -29,8 +29,12 @@ app.use(bp.json());
 
 router.use(function(req, res, next){
   if (req.connection.remoteAddress == feVal) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
   } else  {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.'.red);
     next();
   }
