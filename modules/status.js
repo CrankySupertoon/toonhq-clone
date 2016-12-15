@@ -25,7 +25,7 @@ module.exports = {
     captureLoginData();
     setTimeout(function () {
       res.send({ 'gameserver': Gameserver });
-    }, 3000); // This will be lowered in production. It's only high because of my delay.
+    }, 4000); // This will be lowered in production. It's only high because of my delay.
   }
 };
 
@@ -39,14 +39,18 @@ function captureLoginData () {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       Response = JSON.parse(body);
+      if (Response['success'] == false) {
+        console.log(Response['banner']);
+        return
+      }
       if (Response['success'] == "delayed") {
         QueueToken = Response['queueToken'];
         return queuedTokenResponse(QueueToken)
       } else {
-        Gameserver = Response['gameserver']
+        Gameserver = Response['gameserver'];
       }
     }
-    return Gameserver
+    return Gameserver;
   });
 }
 
@@ -64,8 +68,8 @@ function queuedTokenResponse(QueueToken) {
   return Gameserver;
 }
 
-function checkLoginServer() {
- // To be completed.
+function checkServers () {
+
 }
 
 // Finalise
