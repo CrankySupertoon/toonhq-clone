@@ -5,6 +5,7 @@
 
 var request = require('request');
 var looper = require('infinite-loop');
+var colours = require('colors');
 
 // Setups
 
@@ -12,8 +13,8 @@ var loop = new looper;
 
 // Variables
 
-var InvasionURL = "https://toontownrewritten.com/api/invasions"; // URL from Toontown Rewritten Data
-var InvasionData = []; // Array for Invasion Data
+var InvasionURL = "https://toontownrewritten.com/api/invasions"; // URL from Toontown Rewritten Data.
+var InvasionData = []; // Array for Invasion Data.
 
 // Router Functions
 
@@ -31,7 +32,10 @@ function grabInvasionList() {
     json: true
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      InvasionData = body;
+      InvasionData = body; // Puts the body data into the InvasionData array.
+    } else {
+      // Detection if API is down.
+      InvasionData = { 'banner': 'Toontown Rewritten API is currently down.' };
     }
   });
 }
@@ -45,4 +49,4 @@ loop.run(); // Finally running the function.
 
 // Finalise
 
-console.log('[Invasions] No errors are detected. Continuing...');
+console.log('[Invasions] No errors are detected. Continuing...'.green);

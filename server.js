@@ -7,6 +7,7 @@ var express = require('express');
 var app = express();
 var bp = require('body-parser');
 var morgan = require('morgan');
+var colours = require('colors');
 
 var Invasion = require('./modules/invasions');
 var Status = require('./modules/status');
@@ -30,7 +31,7 @@ router.use(function(req, res, next){
   if (req.connection.remoteAddress == feVal) {
     next();
   } else  {
-    console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.');
+    console.log('[Middleware] There is an incoming connection coming from: ' + req.connection.remoteAddress + '.'.red);
     next();
   }
 });
@@ -50,4 +51,4 @@ router.get('/status', Status.returnServerStatus);
 // Finalise
 
 app.listen(port);
-console.log('[Server] Web-server has successfully started!');
+console.log('[Server] Web-server has successfully started!'.yellow);

@@ -6,10 +6,12 @@
 var request = require('request');
 var ping = require('net-ping');
 var dns = require('dns');
+var looper = require('infinite-loop');
 
 // Setups
 
 var session = ping.createSession();
+var loop = new looper;
 
 // Variables
 
@@ -31,17 +33,7 @@ var LoginServerStatus; // Boolean which determines the status of the LoginServer
 
 module.exports = {
   returnServerStatus: function (req, res) {
-    captureLoginData();
-    setTimeout(function () {
-      lookupGameIP(Gameserver);
-      lookupLoginIP(LoginIP);
-    }, 4000);
-    setTimeout(function () {
-      checkServers();
-    }, 5000);
-    setTimeout(function () {
-      res.send({ 'gameserver': GameserverStatus, 'login': LoginServerStatus }); // This will be lowered in production. It's only high because of my delay.
-    }, 5000);
+    res.send({ 'gameserver': GameserverStatus, 'login': LoginServerStatus }); // We don't want the client to stand there waiting.
   }
 };
 
@@ -112,6 +104,24 @@ function checkServers () {
   });
 }
 
+function updateStatus () {
+  captureLoginData();
+  setTimeout(function () {
+    lookupGameIP(Gameserver);
+    lookupLoginIP(LoginIP);
+  }, 4000);
+  setTimeout(function () {
+    checkServers();
+  }, 5000);
+}
+
+// Looping functions -- I don't want to depend on the front-end pinging the server incase it breaks, plus others might like to use it.
+
+loop.add(updateStatus, []); // Adding the function 'grabInvasionList' to the looper.
+loop.setInterval(30000); // Every 30 seconds, it'll update the list. This isn't as important as Invasions so it'll update
+
+loop.run(); // Finally running the function.
+
 // Finalise
 
-console.log('[Status] No errors are detected. Continuing...');
+console.log('[Status] No errors are detected. Continuing...'.green);
