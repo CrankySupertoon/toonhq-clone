@@ -5,8 +5,22 @@
 
 /* Stock Styles */
 
-body {  }
+body { background: #252830; }
 
 /* Class Styles */
 
+.navbar { margin-top: 3em; }
+  .navbar-dark { background: #434857; }
+  .navbar .navbar-brand { color: #eee; transition: ease .2s; font-family: 'Roboto', cursive; font-weight: 500; }
+    .navbar .navbar-brand:hover { transition: ease .2s; }
+.dhr { background: #434857; }
+.shdr { font-family: 'Roboto', cursive; padding: 15px; width: 100%; border-bottom: 1px solid #434857; text-align: center; height: 10px; }
+  .shdr .text { font-size: 1.25em; background: #252830; padding: 0 .5em 0 .5em; color: #eee; }
+.status { margin-top: 2em; }
+  .status .card { width: 75%; margin: 0 auto; background: 0; border: 1px solid #434857; }
+    .status .card .card-title { color: #eee; text-align: center; font-family: 'Roboto', cursive; font-weight: 300; }
+
 /* ID Styles */
+
+#logo { -webkit-transition: text-shadow .15s linear; transition: text-shadow .15s linear; font-family: 'Carter One', cursive; text-align: left; padding: 15px; color: #fff; font-size: 2em; }
+  #logo:hover { -webkit-transition: text-shadow .15s linear; transition: text-shadow .15s linear; text-shadow: 0px 0px 10px #fff; cursor: pointer; }
