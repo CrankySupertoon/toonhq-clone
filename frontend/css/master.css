@@ -9,6 +9,8 @@ body { background: #252830; }
 
 /* Class Styles */
 
+.clearfix::after { content: ""; clear: both; display: table; }
+
 .navbar { margin-top: 3em; }
   .navbar-dark { background: #434857; }
   .navbar .navbar-brand { color: #eee; transition: ease .2s; font-family: 'Roboto', cursive; font-weight: 500; }
@@ -25,7 +27,11 @@ body { background: #252830; }
     .status .status-wheel .status-text { font-size: 1.25em; color: #eee; font-family: 'Roboto', cursive; @shadow: rgba(0, 0, 0, .1); @shadow-length: 4px; text-shadow: 0 @shadow-length 0 @shadow; }
 .invasions { margin-top: 2em; }
   .invasions .card { width: 100%; margin: 0 auto; background: 0; border: 1px solid #434857; padding: .5em; margin-bottom: 1em; }
-    .invasions .cog-img { width: 25%; }
+  .invasions .img { float: left; width: 5vw; height: 10vh; }
+    .invasions .cog-img { width: 100%; }
+  .invasions .text { }
+    .invasions p { padding: 0; margin: 0; text-align: left; color: #eee; }
+    .invasions .cog-name { font-weight: 700; }
 
 /* ID Styles */
 
