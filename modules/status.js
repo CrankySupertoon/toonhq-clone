@@ -4,6 +4,12 @@
 // Modules
 
 var request = require('request');
+var ping = require('net-ping');
+var dns = require('dns');
+
+// Setups
+
+var session = ping.createSession();
 
 // Variables
 
@@ -15,8 +21,11 @@ var Response; // Response which is stored in array so we can decode it.
 var QueueToken = ""; // String variable for when you're returned with a queue token.
 var Gameserver = ""; // The IP of the server which will be pinged.
 
+var GameIP; // Storing the Gameserver IP. This is left blank because the API will *possibly* return something new each time.
+var LoginIP = "www.toontownrewritten.com"; // Storing the Login IP.
+
 var GameserverStatus; // Boolean which determines the status of the Gameserver.
-var LoginServer; // Boolean which determines the status of the LoginServer.
+var LoginServerStatus; // Boolean which determines the status of the LoginServer.
 
 // Router Functions
 
@@ -24,8 +33,15 @@ module.exports = {
   returnServerStatus: function (req, res) {
     captureLoginData();
     setTimeout(function () {
-      res.send({ 'gameserver': Gameserver });
-    }, 4000); // This will be lowered in production. It's only high because of my delay.
+      lookupGameIP(Gameserver);
+      lookupLoginIP(LoginIP);
+    }, 4000);
+    setTimeout(function () {
+      checkServers();
+    }, 5000);
+    setTimeout(function () {
+      res.send({ 'gameserver': GameserverStatus, 'login': LoginServerStatus }); // This will be lowered in production. It's only high because of my delay.
+    }, 5000);
   }
 };
 
@@ -50,7 +66,6 @@ function captureLoginData () {
         Gameserver = Response['gameserver'];
       }
     }
-    return Gameserver;
   });
 }
 
@@ -65,11 +80,36 @@ function queuedTokenResponse(QueueToken) {
       Gameserver = Response['gameserver'];
     }
   });
-  return Gameserver;
+}
+
+function lookupGameIP(domain) {
+  dns.lookup(domain, (err, address, family) => {
+    GameIP = address;
+  });
+}
+
+function lookupLoginIP(domain) {
+  dns.lookup(domain, (err, address, family) => {
+    LoginIP = address;
+  });
 }
 
 function checkServers () {
-
+  session.pingHost(GameIP, function (error, target) {
+    if (!error) {
+      GameserverStatus = true;
+    } else {
+      GameserverStatus = false;
+    }
+  });
+  // Ping the Login Server
+  session.pingHost(LoginIP, function (error, target) {
+    if (!error) {
+      LoginServerStatus = true;
+    } else {
+      LoginServerStatus = false;
+    }
+  });
 }
 
 // Finalise
