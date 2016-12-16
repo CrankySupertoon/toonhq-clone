@@ -19,13 +19,15 @@ body { background: #252830; }
 .shdr { font-family: 'Roboto', cursive; padding: 15px; width: 100%; border-bottom: 1px solid #434857; text-align: center; height: 10px; }
   .shdr .text { font-size: 1.25em; background: #252830; padding: 0 .5em 0 .5em; color: #eee; }
 .status { margin-top: 2em; }
+  .status .banner-disabled { display: none; }
   .status .card { width: 75%; margin: 0 auto; background: 0; border: 1px solid #434857; }
     .status .card .card-title { color: #eee; text-align: center; font-family: 'Roboto', cursive; font-weight: 300; }
   .status .status-wheel { text-align: center; position: relative; display: table; width: 45%; height: 0; padding: 20% 0; border-radius: 50%; background: #ddd; margin: 0 auto; line-height: .1em; }
-    .status .online { background: #1bc98e; }
-    .status .offline { background: #e64759; }
+    .status .online { background: #1bc98e; transition: ease 1s; }
+    .status .offline { background: #e64759; transition: ease 1s; }
     .status .status-wheel .status-text { font-size: 1.25em; color: #eee; font-family: 'Roboto', cursive; @shadow: rgba(0, 0, 0, .1); @shadow-length: 4px; text-shadow: 0 @shadow-length 0 @shadow; }
 .invasions { margin-top: 2em; }
+  .invasions .cs { font-weight: 300; font-family: 'Roboto', cursive; color: #eee; text-align: center; padding: 1.5em; }
   .invasions .card { width: 100%; margin: 0 auto; background: 0; border: 1px solid #434857; padding: .5em; margin-bottom: 1em; }
   .invasions .img { float: left; width: 5vw; height: 10vh; }
     .invasions .cog-img { width: 100%; }
@@ -33,7 +35,13 @@ body { background: #252830; }
     .invasions p { padding: 0; margin: 0; text-align: left; color: #eee; }
     .invasions .cog-name { font-weight: 700; }
 
+.modal { }
+  .modal-title { text-align: center; font-weight: 300; }
+  .modal-content { background-color: #434857; border: 5px solid #252830; color: #eee; text-align: center; }
+  .modal-header { border: 0; padding: 15px 15px 0 15px; }
+
 /* ID Styles */
 
 #logo { -webkit-transition: text-shadow .15s linear; transition: text-shadow .15s linear; font-family: 'Carter One', cursive; text-align: left; padding: 15px; color: #fff; font-size: 2em; }
   #logo:hover { -webkit-transition: text-shadow .15s linear; transition: text-shadow .15s linear; text-shadow: 0px 0px 10px #fff; cursor: pointer; }
+#banner { font-weight: 300; }

@@ -3,6 +3,9 @@
 
 var APIUrl = "http://localhost:8080/api/v1/status"; // Setting the APIUrl.
 
+var Banner = document.getElementById('banner');
+var BannerMsg = document.getElementById('banner-msg');
+
 $(document).ready(function () {
   setInterval(function () {
     $.getJSON(APIUrl, function (data) {
@@ -16,6 +19,15 @@ $(document).ready(function () {
         $('#game-color').addClass("online");
         $('#game-text').text('ONLINE');
       }
+
+      // Banner
+      if (data.banner) {
+        Banner.classList.remove('banner-disabled');
+        BannerMsg.innerHTML = data.banner;
+      } else {
+        Banner.classList.add('banner-disabled');
+      }
+
     })
     .fail(function() {
       $('#login-color').addClass("offline");
@@ -23,6 +35,8 @@ $(document).ready(function () {
 
       $('#game-color').addClass("offline");
       $('#game-text').text('OFFLINE');
+
+      Banner.classList.add('banner-disabled');
     });
-  }, 10000);
+  }, 1000);
 });

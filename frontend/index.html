@@ -20,28 +20,50 @@
       <a class="navbar-brand" href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Toontown Rewritten Tracker</a>
       <ul class="nav navbar-nav">
         <li class="nav-item float-xs-right">
-          <button class="btn btn-outline-success" type="button" name="button">Credits</button>
+          <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#credits">Credits</button>
         </li>
       </ul>
     </nav>
+    <div class="modal fade" id="credits" tabindex="1" role="dialog" aria-labelledby="creditsLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="creditsLabel">Credits</h4>
+          </div>
+          <div class="modal-body">
+            <hr>
+              <p>This is a replication project which is currently being developed by <a href="https://github.com/decryptable">decryptable</a></p>
+            <hr>
+              <p>It's aim to represent my skills in Javascript aswell as a touch-up in my ability to write and produce an automated website aswell as design.</p>
+            <hr>
+              <p>This is also something I made especially for my application to join the team of Toontown Rewritten.</p>
+            <hr>
+              <p>All data is collected from my API that I built especially this site - It can be found <a href="https://api.garb.pw/">here</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="shdr">
       <span class="text">Server Status</span>
     </div>
     <div class="status">
+      <div id="banner" class="alert alert-success banner-disabled">
+        <strong>Server Message!</strong> <span id="banner-msg"></span>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="card card-block">
             <h4 class="card-title">Game</h4>
-            <div id="game-color" class="status-wheel offline">
-              <span id="game-text" class="status-text">OFFLINE</span>
+            <div id="game-color" class="status-wheel">
+              <span id="game-text" class="status-text">CHECKING</span>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card card-block">
             <h4 class="card-title">Login</h4>
-            <div id="login-color" class="status-wheel offline">
-              <span id="login-text" class="status-text">OFFLINE</span>
+            <div id="login-color" class="status-wheel">
+              <span id="login-text" class="status-text">CHECKING</span>
             </div>
           </div>
         </div>
@@ -51,19 +73,7 @@
       <span class="text">Invasions</span>
     </div>
     <div class="invasions">
-      <div class="col-md-4">
-        <div class="card card-block">
-          <div class="img">
-            <img class="cog-img" src="img/cogs/ambulance_chaser.png" alt="">
-          </div>
-          <div class="text clearfix">
-            <p class="cog-name">Ambulance Chaser</p>
-            <p class="district">Colorful Canvas</p>
-            <p class="cogs-remaining">1319/3000 cogs</p>
-            <p class="time-remaining">13:51 remaining</p>
-          </div>
-        </div>
-      </div>
+      <h1 class="cs">Currently being developed. ☺</h1>
     </div>
     <!-- Javascript -->
     <script language="javascript" type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>

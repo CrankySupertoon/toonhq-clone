@@ -16,6 +16,7 @@ var loop = new looper;
 // Variables
 
 var LoginURL = "https://www.toontownrewritten.com/api/login?format=json"; // Login API link.
+var StatusURL = "https://www.toontownrewritten.com/api/status"; // Grabbing the banner if one is enabled.
 var Username = ""; // Username for Login API.
 var Password = ""; // Password for Login API.
 
@@ -27,13 +28,15 @@ var GameIP; // Storing the Gameserver IP. This is left blank because the API wil
 var LoginIP = "www.toontownrewritten.com"; // Storing the Login IP.
 
 var GameserverStatus; // Boolean which determines the status of the Gameserver.
-var LoginServerStatus; // Boolean which determines the status of the LoginServer.
+var LoginServerStatus; // Boolean which determines the status of the LoginServer.v
+var Banner; // Storing the banner.
+var Nothing; // So the banner resets.
 
 // Router Functions
 
 module.exports = {
   returnServerStatus: function (req, res) {
-    res.send({ 'gameserver': GameserverStatus, 'login': LoginServerStatus }); // We don't want the client to stand there waiting.
+    res.send({ 'gameserver': GameserverStatus, 'login': LoginServerStatus, 'banner': Banner }); // We don't want the client to stand there waiting.
   }
 };
 
@@ -74,6 +77,21 @@ function queuedTokenResponse(QueueToken) {
   });
 }
 
+function grabBanner() {
+  request({
+    url: StatusURL,
+    json: true
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      if (body['banner']) {
+        Banner = body['banner'];
+      } else {
+        Banner = Nothing;
+      }
+    }
+  });
+}
+
 function lookupGameIP(domain) {
   dns.lookup(domain, (err, address, family) => {
     GameIP = address;
@@ -106,6 +124,7 @@ function checkServers () {
 
 function updateStatus () {
   captureLoginData();
+  grabBanner();
   setTimeout(function () {
     lookupGameIP(Gameserver);
     lookupLoginIP(LoginIP);
