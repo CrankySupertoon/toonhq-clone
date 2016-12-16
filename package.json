@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "express": "^4.14.0",
+    "infinite-loop": "^0.2.2",
     "morgan": "^1.7.0",
     "net-ping": "^1.2.0",
     "request": "^2.79.0"
