@@ -1,7 +1,7 @@
 // Status.js Front End
 // Developed by @gaarb
 
-var APIUrl = "http://localhost:8080/api/v1/status"; // Setting the APIUrl.
+var APIUrl = "https://api.garb.pw/status"; // Setting the APIUrl.
 
 var Banner = document.getElementById('banner');
 var BannerMsg = document.getElementById('banner-msg');
