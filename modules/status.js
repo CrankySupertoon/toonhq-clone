@@ -124,7 +124,9 @@ function checkServers () {
 
 function updateStatus () {
   captureLoginData();
-  grabBanner();
+  setTimeout(function () {
+    grabBanner();
+  }, 4000);
   setTimeout(function () {
     lookupGameIP(Gameserver);
     lookupLoginIP(LoginIP);
