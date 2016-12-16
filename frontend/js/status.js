@@ -38,5 +38,5 @@ $(document).ready(function () {
 
       Banner.classList.add('banner-disabled');
     });
-  }, 10000);
+  }, 60000);
 });
