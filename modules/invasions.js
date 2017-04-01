@@ -14,7 +14,6 @@ var loop = new looper;
 // Variables
 
 var InvasionURL = "https://toontownrewritten.com/api/invasions"; // URL from Toontown Rewritten Data.
-var InvasionData = []; // Array for Invasion Data.
 var currentInvasions = []; // The current Invasions go in here.
 var InvasionSchema = { 'id': '', 'district': '', 'type': '', 'progress': '', 'asOf': '' }; // Schema for adding data to InvasionData.
 var RemoveSchema = { 'district': '' };
@@ -44,22 +43,10 @@ function removeInvasion (array, delList) {
 function organiseInvasions () {
   var i = 0;
   var curInv = currentInvasions.invasions;
+  var InvasionData = [];
   for (var district in curInv) {
     if (curInv.hasOwnProperty(district)) {
       i++;
-      var keyFound = false;
-      for (var key in InvasionData) {
-        if (InvasionData.hasOwnProperty(key)) {
-          if (InvasionData[key].district === district) {
-            InvasionData[key].type = curInv[district].type;
-            InvasionData[key].progress = curInv[district].progress;
-            InvasionData[key].asOf = curInv[district].asOf;
-            keyFound = true;
-            break;
-          }
-        }
-      }
-      if (keyFound) { continue; }
       InvasionSchema = {};
       InvasionSchema.id = i;
       InvasionSchema.district = district;
@@ -67,25 +54,6 @@ function organiseInvasions () {
       InvasionSchema.progress = curInv[district].progress;
       InvasionSchema.asOf = curInv[district].asOf;
       InvasionData.push(InvasionSchema);
-    }
-  }
-  // Remove leftover invasions
-  for (var key in InvasionData) {
-    if (InvasionData.hasOwnProperty(key)) {
-      var foundInvasion = false;
-      RemoveSchema = {};
-      for (var district in curInv) {
-        if (curInv.hasOwnProperty(district)) {
-          if (InvasionData[key].district === district) {
-            foundInvasion = true;
-            break;
-          }
-        }
-      }
-      if (!foundInvasion) {
-        delete currentInvasions[district];
-        console.log('Deleted', district);
-      }
     }
   }
 }
