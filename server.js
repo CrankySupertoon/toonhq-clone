@@ -44,7 +44,7 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res) {
   res.json(
-    { message: "Welcome to ToonHQ Clone API!" }
+    { banner: "Welcome to ToonHQ Clone API!" }
   );
 });
 

@@ -1,5 +1,5 @@
 // Server Status -- ToonHQ Clone
-// Created by @gaarb
+// Created by @snrgabe
 
 // Modules
 
