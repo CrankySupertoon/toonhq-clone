@@ -14,6 +14,7 @@ var loop = new looper;
 // Variables
 
 var InvasionURL = "https://toontownrewritten.com/api/invasions"; // URL from Toontown Rewritten Data.
+var InvasionData = []; // Array for Data
 var currentInvasions = []; // The current Invasions go in here.
 var InvasionSchema = { 'id': '', 'district': '', 'type': '', 'progress': '', 'asOf': '' }; // Schema for adding data to InvasionData.
 var RemoveSchema = { 'district': '' };
@@ -43,10 +44,10 @@ function removeInvasion (array, delList) {
 function organiseInvasions () {
   var i = 0;
   var curInv = currentInvasions.invasions;
-  var InvasionData = [];
   for (var district in curInv) {
     if (curInv.hasOwnProperty(district)) {
       i++;
+      InvasionData = []; // Clear Array
       InvasionSchema = {};
       InvasionSchema.id = i;
       InvasionSchema.district = district;
