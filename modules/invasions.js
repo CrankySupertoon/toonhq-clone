@@ -44,10 +44,10 @@ function removeInvasion (array, delList) {
 function organiseInvasions () {
   var i = 0;
   var curInv = currentInvasions.invasions;
+  InvasionData = []; // Clear Array
   for (var district in curInv) {
     if (curInv.hasOwnProperty(district)) {
       i++;
-      InvasionData = []; // Clear Array
       InvasionSchema = {};
       InvasionSchema.id = i;
       InvasionSchema.district = district;
