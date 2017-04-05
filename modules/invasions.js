@@ -19,6 +19,7 @@ var currentInvasions = []; // The current Invasions go in here.
 var InvasionSchema = { 'id': '', 'district': '', 'type': '', 'progress': '', 'asOf': '' }; // Schema for adding data to InvasionData.
 var RemoveSchema = { 'district': '' };
 var RemoveInvasion = []; // List to remove invasions that aren't active.
+var i = 0; // Count for invasions.
 
 // Router Functions
 
@@ -30,19 +31,7 @@ module.exports = {
 
 // Normal Functions
 
-function removeInvasion (array, delList) {
-  for(var i = 0; i < array.length; i++) {
-    var obj = array[i];
-
-    if(delList.indexOf(obj.district) !== -1) {
-        arrayOfObjects.splice(i, 1);
-        i--;
-    }
-  }
-}
-
 function organiseInvasions () {
-  var i = 0;
   var curInv = currentInvasions.invasions;
   InvasionData = []; // Clear Array
   for (var district in curInv) {
